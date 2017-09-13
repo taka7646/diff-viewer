@@ -12,5 +12,8 @@
 */
 
 $router->get('/', function () use ($router) {
+    $com = new App\IO\CommandWrapper('ls');
+    $com->execute(['-al']);
+    var_dump($com->getOutput());
     return $router->app->version();
 });
