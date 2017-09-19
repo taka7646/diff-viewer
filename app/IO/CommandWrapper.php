@@ -21,7 +21,11 @@ class CommandWrapper {
     public function execute(array $params = []): bool
     {
         $params = array_merge($this->params, $params);
-        $cmdLine = "{$this->command} " . implode(' ', $params);
+        $cmdLine = '';
+        if (!empty($this->currentDir)) {
+            $cmdLine .= "cd {$this->currentDir};";
+        }
+        $cmdLine .= "{$this->command} " . implode(' ', $params);
         exec($cmdLine, $out, $retCode);
         $this->out = $out;
         $this->retCode = $retCode;
