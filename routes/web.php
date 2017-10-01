@@ -12,8 +12,8 @@
 */
 
 $router->get('/', function () use ($router) {
-    $com = new App\IO\CommandWrapper('ls');
-    $com->execute(['-al']);
-    var_dump($com->getOutput());
+    $git = new App\IO\GitCommand('ls');
+    $git->log('index.php');
+    var_dump($git->getOutput());
     return $router->app->version();
 });
