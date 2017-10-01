@@ -12,8 +12,10 @@
 */
 
 $router->get('/', function () use ($router) {
-    $git = new App\IO\GitCommand('ls');
-    $git->log('index.php');
-    var_dump($git->getOutput());
+ //   $git = new App\IO\GitCommand('$HOME/project/go/src/github.com/spf13/pflag');
+    $git = new App\IO\GitCommand('$HOME/project/php/diff-viewer');
+    $logs = $git->log('int.go');
+    $logs = $git->ls();
+    var_dump($logs);
     return $router->app->version();
 });

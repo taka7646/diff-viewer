@@ -29,6 +29,11 @@ class CommandWrapper {
         $this->environments = array_merge($this->environments, $items);
     }
 
+    public function setCurrentDir($path)
+    {
+        $this->currentDir = $path;
+    }
+
     public function execute(array $params = []): bool
     {
         $params = array_merge($this->params, $params);
